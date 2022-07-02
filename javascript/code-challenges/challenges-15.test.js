@@ -180,35 +180,24 @@ Here is a sample board:
 
 const detectTicTacToeWin = (board) => {
   // Solution code here...
-  board.map(arr => {
-    for(elem in arr){
-      if(elem === 'X'){
-        
+  let validateCordinates = (row1, col1, row2, col2, row3, col3) => {
+    if(board[row1] !== '' && board[row1][col1] !== ''){
+      if(board[row1][col1] === board[row2][col2] && board[row2][col2] === board[row3][col3]){
+        return true;
       }
     }
-  })
+
+    return false;
+  };
+
+  let winner = validateCordinates(0, 0, 0, 1, 0, 2) || validateCordinates(1, 0, 1, 1, 1, 2)
+  || validateCordinates(2, 0, 2, 1, 2, 2) || validateCordinates(0, 0, 1, 0, 2, 0)
+  || validateCordinates(0, 1, 1, 1, 2, 1) || validateCordinates(0, 2, 1, 2, 2, 2) 
+  || validateCordinates(0, 0, 1, 1, 2, 2) || validateCordinates(0, 2, 1, 1, 2, 0);
+
+  return winner;
 };
 
-function helpCheck(row1, col1, row2, col2, row3, col3){
-  }
-  for(let i = 0; i < 3; i++){
-    // if (row1 === i && col1 === 0 && row2 === i && col2 === 1 && row3 === i && col2 === 2){
-    //   return true;
-    // }
-    // if (row1 === 0 && col1 === i && row2 === 1 && col2 === i && row3 === 2 && col2 === i){
-    //   return true;
-    // }
-    for(let j = 0; j < 3; j++){
-      if(row[i] === i && col[j] === j){
-        return true;
-      }
-      if(row[j] === j && col[i] === i){
-        return true;
-      }
-    }
-  }
-  
-}
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
