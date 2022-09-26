@@ -13,3 +13,9 @@
     includes: Time complexity of this would be O(N) - worse case scenario - because this methods required iterating through the linked list until a matching node is found. 
 
     toString: Performed with O(N) time complexity because string generation requires linked list iteration.
+
+    append: Time complexity of O(N) requiring traversal of entire linked list to insert new Node to the end of the linked list
+
+    insertBefore: Time complexity of O(N) - worse case - using conditional logic and traversing through list until matching Node is found. Once found, inserts a new Node before the matching Node.
+
+    insertAfter: Time complexity of O(N) - worse case - using conditional logic and traversing through list until matching Node is found. Once found, inserts a new Node after the matching Node.
