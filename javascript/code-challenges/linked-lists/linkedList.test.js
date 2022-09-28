@@ -77,4 +77,21 @@ describe('Linked List Classes', () => {
     const result = LinkedListTest1.toString();
     expect(result).toEqual('{head} -> {1} -> {2} -> {3} -> {4} -> {true} -> {false} -> {5} -> {6} -> {7} -> {tail} -> NULL')
   });
+
+  it('Handles where K is greater than the length of the list', () => {
+    const result = LinkedListTest1.kthFromEnd(100);
+    expect(result).toEqual('null');
+  })
+
+  it('Handles where K and length of the list are the same', () => {
+    const result = LinkedListTest1.kthFromEnd(LinkedListTest1.length)
+    expect(result).toEqual(LinkedListTest1.head.data);
+  })
+
+  it('Handles where K is a negative number', () => {
+    const result = LinkedListTest1.kthFromEnd(-1)
+    expect(result).toEqual('null');
+  })
 });
+
+

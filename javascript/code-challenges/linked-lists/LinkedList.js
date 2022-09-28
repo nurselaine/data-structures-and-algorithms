@@ -5,6 +5,7 @@ class LinkedList {
 
     constructor(head){
         this.head = new Node(-1, null);
+        this.length = 0;
     }
 
      insert (value){
@@ -13,6 +14,7 @@ class LinkedList {
         let newNode = new Node(value, temp);
         this.head.next = newNode;
         newNode.next = temp;
+        this.length++;
     }
 
     includes(value){
@@ -90,6 +92,27 @@ class LinkedList {
         }
 
         currentNode.next = subList;
+    }
+
+    kthFromEnd(k){
+    // returns the node's value that is K places from the tail of the linked list
+        if(k > this.length || k < 0){
+            return 'null';
+        } else {
+            let currentNode = this.head.next;
+            let counter = 0;
+    
+            while(Math.abs(this.length - counter) >= k){
+                if(Math.abs(this.length - counter) === k){
+                    return currentNode.data;
+                } else {
+                    currentNode = currentNode.next;
+                    counter++;
+                }
+                console.log(`currentNode ${currentNode}`);
+            }
+            return currentNode.data;
+        }
     }
 }
 
