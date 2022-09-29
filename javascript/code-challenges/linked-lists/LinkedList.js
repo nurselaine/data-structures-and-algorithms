@@ -41,8 +41,8 @@ class LinkedList {
         let currentNode = this.head.next;
         let result = "";
 
-        while(currentNode.next){
-            console.log(currentNode);
+        while(currentNode){
+            // console.log(currentNode);
             result += `{${currentNode.data}} -> `;
             currentNode = currentNode.next;
         }
@@ -113,6 +113,54 @@ class LinkedList {
             }
             return currentNode.data;
         }
+    }
+
+    zipLists(list1, list2){
+        // test case: if list 1 or list 2 are empty
+        if(list2.length === 0){
+            return list1;
+        } 
+        if(list1.length === 0){
+            return list2;
+        }
+        // test case: if list1 is smaller than list 2
+        if(list2.length > list1.length){
+            const tempList = list2;
+            list2 = list1;
+            list1 = tempList;
+        }
+
+        let t1 = list1.head.next; 
+        let t2 = list2.head.next; 
+        let t3 = t2.next; 
+
+        while(t1 !== null || t2 !== null){
+
+            t2.next = t1.next; 
+            t1.next = t2; 
+            t1 = t2.next; 
+
+            if(t1 === null){
+                return t1 = t2;
+            } 
+
+            t2 = t3; // null
+
+            if(t2 === null){
+                return t1;
+            }
+
+            t3 = t2.next;// 
+
+            if (t3 === null){
+                t2.next = t1.next; // 4 5
+                t1.next = t2; //  3 4 5
+                // console.log('node data: ',t1.data, t2.data, t3.data);
+                return t1;
+            }
+
+        }
+        return t1;
     }
 }
 
