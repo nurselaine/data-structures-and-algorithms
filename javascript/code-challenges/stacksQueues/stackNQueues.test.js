@@ -1,9 +1,11 @@
 'use strict';
 
-const { Stack, Queue } = require('./stackNQueues');
+const { Stack, Queue, PseudoQueue } = require('./stackNQueues');
 
 const stackTest1 = new Stack();
 const queueTest1 = new Queue();
+
+const pseudoQueueTest1 = new PseudoQueue();
 
 describe('Stacks & Queue Validation', () => {
   it('Can successfully push onto a stack', () => {
@@ -112,6 +114,37 @@ describe('Stacks & Queue Validation', () => {
     expect(queueTest1.peek()).toThrowError();
     expect(queueTest1.dequeue()).toThrow();
     expect(queueTest1.isEmpty()).not.toBeFalsy();
+  });
+
+  it('Can successfully instantiate an empty pseudoQueue', () => {
+    let pseudoQ = new PseudoQueue();
+
+    expect(pseudoQ).toBeTruthy();
+  });
+
+  it('Can successfully enqueue into a pseudo queue', () => {
+    pseudoQueueTest1.enqueue(1);
+    // console.log(pseudoQueueTest1)
+    expect(pseudoQueueTest1.dequeue()).toEqual(1);
+    expect(pseudoQueueTest1).toBeTruthy();
+    // console.log(pseudoQueueTest1)
+  });
+
+  it('Can successfully enqueue multiple nodes into a pseudo queue', () => {
+    pseudoQueueTest1.enqueue(2);
+    pseudoQueueTest1.enqueue(3);
+    pseudoQueueTest1.enqueue(4);
+    // console.log(pseudoQueueTest1)
+    expect(pseudoQueueTest1.dequeue()).toEqual(2);
+    expect(pseudoQueueTest1).toBeTruthy();
+    // console.log(pseudoQueueTest1)
+  });
+
+  it('Can successfully dequeue into a pseudo queue', () => {
+    pseudoQueueTest1.dequeue();
+
+    expect(pseudoQueueTest1.dequeue()).toEqual(4);
+    expect(pseudoQueueTest1).toBeTruthy();
   });
 })
 

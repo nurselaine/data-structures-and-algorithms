@@ -119,8 +119,52 @@ class Queue {
   }
 }
 
+/*
+Create a new class called pseudo queue.
+Do not use an existing Queue.
+Instead, this PseudoQueue class will implement our standard queue interface (the two methods listed below),
+Internally, utilize 2 Stack instances to create and manage the queue
+
+enqueue
+Arguments: value
+Inserts value into the PseudoQueue, using a first-in, first-out approach.
+dequeue
+Arguments: none
+Extracts a value from the PseudoQueue, using a first-in, first-out approach.
+*/ 
+
+class PseudoQueue {
+  
+  constructor(){
+    this.stack1 = new Stack();
+    this.stack2 = new Stack();
+  }
+
+  enqueue(value){
+    // adding to stack 1
+    this.stack1.push(value);
+  }
+
+  dequeue(){
+    // stack 2 will be the reverse of stack 1 and that will remove the first node from stack 1
+    while(!this.stack1.isEmpty()){
+      // do this until stack 1 is empty
+      this.stack2.push(this.stack1.pop());
+    }
+    // now stack2 has all of stack 1's nodes but in reverse order
+    const poppedNode = this.stack2.pop();
+    while(!this.stack2.isEmpty()){
+      this.stack1.push(this.stack2.pop());
+    }
+
+    return poppedNode;
+
+  }
+}
+
 module.exports = {
   Node,
   Stack,
   Queue,
+  PseudoQueue,
 }
