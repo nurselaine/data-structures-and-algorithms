@@ -11,6 +11,34 @@ const animalShelterTest1 = new AnimalShelter();
 const dogObj = {name: 'dog'};
 const catObj = {name: 'cat'};
 
+const validateBrackets = (string) => {
+  if(typeof(string) !== 'string' || string === null){
+    return console.log('Please provide valid string');
+  }
+    let openStack = new Stack();
+    let closeStack = new Stack();
+
+    for(let i = 0; i < string.length; i ++){
+      if(string.charAt(i) === '(' || string.charAt(i) === '[' || string.charAt(i) === '{'){
+        openStack.push(string.charAt(i));
+      }
+      if(string.charAt(i) === ')' || string.charAt(i) === ']' || string.charAt(i) === '}' ){
+        closeStack.push(string.charAt(i));
+      }
+    }
+
+    while(!openStack.isEmpty()){
+      let openBrac = openStack.pop();
+      let closeBrac = closeStack.pop();
+      if(openBrac !== closeBrac){
+        return false;
+      }
+    }
+    return closeStack.isEmpty() ? true : false;
+
+
+}
+
 // animalShelterTest1.enqueue(dogObj); // 1 
 // animalShelterTest1.enqueue(catObj); // 2
 // animalShelterTest1.enqueue(dogObj); // 3

@@ -38,3 +38,24 @@
     AnimalShelter.dequeue: Takes in a pref (either dog or cat, if it is neither than return null). Return either dog or cat based on pref 
 
     WhiteBoarding: https://cfjun.invisionapp.com/freehand/Code-Challenges-lAqVy8AYU?dsid_h=7eed01026ead4a7[…]d8d5b53a2d68dd55623ef70f1501a7ddebc0f2a804ee49b2e2a5ae5ffb
+
+    https://projects.invisionapp.com/freehand/document/HGwZXdbcQ
+    
+# Validate Brackets Challenge Summary
+
+## Whiteboard process
+![WHITEBOARD]('./codechallenge-13.png')
+
+# Approach & Efficiency
+    1. Use two stacks to track opening and closing brackets
+    2. Match each bracket in each stack
+    3. If all brackets match then return true otherwise return false
+
+    - Efficiency: Approach utilizes two loops, Once to iterate the string and another to iterate through both stacks. Time compelixty is O(N) as input directly effects processing time of algorithm
+
+## Solution
+    - Test cases:
+        - [({})] --> true
+        - (){}[[]]} --> true
+        - null --> false
+        - {[] --> false
