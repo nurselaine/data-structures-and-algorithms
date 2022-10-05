@@ -43,7 +43,7 @@ class Stack {
   peek() {
     // Returns: Value of the node located at the top of the stack
     if (this.top) {
-      console.log(`peek ${this.top.value}`);
+      console.log(`peek ${JSON.stringify(this.top.value)}`);
       return this.top.value;
     }
     return null;
@@ -96,6 +96,7 @@ class Queue {
 
     let current = this.front;
     this.front = this.front.next;
+    console.log(`dequeued node ${JSON.stringify(current.value)}`)
     // console.log(`new front ${this.front.value}`);
     this.length--;
     return current.value;
@@ -108,7 +109,6 @@ class Queue {
     }
 
     if (this.front) {
-      console.log(`peek ${this.front.value}`);
       return this.front.value;
     }
   }
@@ -162,9 +162,52 @@ class PseudoQueue {
   }
 }
 
+class AnimalShelter {
+  constructor(){
+    this.dogQueue = new Queue();
+    this.catQueue = new Queue();
+    this.counter = 0;
+    this.dogLength = 0;
+    this.catLength = 0;
+  }
+
+  enqueue(animal){
+    // if(animal.name !== 'dog' || animal.name !== 'cat'){
+    //   throw Error('This Shelter only take dogs/cats!');
+    // }
+    animal.count = this.counter++;
+    if(animal.name === 'dog'){
+      this.dogQueue.enqueue(animal);
+      this.dogLength++;
+    }
+
+    if(animal.name === 'cat'){
+      this.catQueue.enqueue(animal);
+      this.catLength++;
+    }
+  }
+
+  animalDequeue(pref){
+
+    if(pref === 'dog'){
+      console.log('dequeuing dog');
+      return this.dogQueue.dequeue();
+    } else if(pref === 'cat'){
+      console.log('dequeuing cat');
+      return this.catQueue.dequeue();
+    } else {
+      
+      return this.dogQueue.peek().count < this.catQueue.peek().count 
+      ? this.dogQueue.dequeue()
+      : this.catQueue.dequeue();
+    }
+  }
+}
+
 module.exports = {
   Node,
   Stack,
   Queue,
   PseudoQueue,
+  AnimalShelter
 }
