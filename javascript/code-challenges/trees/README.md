@@ -32,6 +32,10 @@
     Contains
     Argument: value
     Returns: boolean indicating whether or not the value is in the tree at least once.
+    **Write a method for the Binary Tree class to find maximum value**
+    maxValue
+    Arguements: none
+    Returns: number
 
 ## Approach & Efficiency
 <!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
@@ -40,7 +44,7 @@
   Insertion to a BST: Time efficiency is O(LogN) because the tree is sorted and the hierarchial organization
   of a tree reduces the amount of nodes and edges the algorithm may have to examine. 
 
-
+  find Max Value: Time efficiency is O(N), traversal of all nodes and edges within the tree
 ## API
 <!-- Description of each method publicly available in each of your trees -->
 **Binary Tree class**
@@ -50,3 +54,6 @@
 
 **Binary Search Tree class**
   Add : takes in a value as an arguement and returns nothing, but inserts a node into the right place of a BST
+
+**WhiteBoarding Process**
+![challenge16](./assets/codechallenge16.png)

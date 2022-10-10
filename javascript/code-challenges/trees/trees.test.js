@@ -29,11 +29,6 @@ binarySearchTestTree.root.left.left = new Node(1);
 binarySearchTestTree.root.left.right = new Node(8);
 binarySearchTestTree.root.right.right = new Node(17);
 
-// tree.preOrder();
-// tree.inOrder();
-// tree.postOrder();
-// binarySearchTestTree.breadthFirst();
-
 describe('Tree Validation', () => {
   it('Can successfully instantiate an empty tree', () => {
     const newTree = new BinaryTree();
@@ -85,5 +80,11 @@ describe('Tree Validation', () => {
 
     expect(response).not.toBeTruthy();
     expect(response).toEqual(false);
+  });
+
+  it('Binary Tree method returns the max value in the tree', () => {
+    let response = binaryTreeTest.maxValue();
+
+    expect(response).not.toBeTruthy(17);
   });
 });
