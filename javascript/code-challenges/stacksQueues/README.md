@@ -32,6 +32,9 @@
     pseudoQueue.enqueue: Time complexity is O(1), uses a stack to store all of the values into the pseudo class
 
     pseudoQueue.dequeue: Time complexity is O(2N) which is O(N) - using two while loops to reverse the stack and then reverse the stack again to return to it's original order
+    WhiteBoarding: 
+    
+![challenge 12](./codechallenge12.png)
 
     AnimalShelter.enqueue: Takes in an animal(either dog or cat object) and adds it to the queue
 
