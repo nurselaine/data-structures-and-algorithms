@@ -242,7 +242,7 @@ tree.root.right.right = new Node(17);
 // tree.add(10);
 // tree.add(5);
 // tree.add(15);
-let response = tree.maxValue();
+let response = tree.breadthFirst();
 console.log(response);
 
 // tree.preOrder();
