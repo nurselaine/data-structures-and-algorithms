@@ -44,7 +44,9 @@
 # Validate Brackets Challenge Summary
 
 ## Whiteboard process
-![WHITEBOARD]('./codechallenge-13.png')
+![WHITEBOARD Code Challenge 13](./assets/codechallenge-13.png)
+![WHITEBOARD Code Challenge 14](./assets/codechallenge14.png)
+
 
 # Approach & Efficiency
     1. Use two stacks to track opening and closing brackets
