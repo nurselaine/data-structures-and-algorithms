@@ -164,4 +164,36 @@ class LinkedList {
     }
 }
 
+class DoublyNode{
+    constructor(value){
+        this.value = value;
+        this.next = null;
+        this.back = null;
+    }
+}
+
+class doublyLinkList{
+    constructor(){
+        this.head = null;
+        this.back = null;
+    }
+
+    enqueue(value){
+
+    }
+
+    dequeue(){
+
+    }
+
+    peek(){
+
+    }
+
+    isEmpty(){
+        
+    }
+
+}
+
 module.exports = LinkedList;
