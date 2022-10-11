@@ -30,4 +30,6 @@
 
     pseudoQueue.dequeue: Time complexity is O(2N) which is O(N) - using two while loops to reverse the stack and then reverse the stack again to return to it's original order
 
-    WhiteBoarding: https://cfjun.invisionapp.com/freehand/Code-Challenges-lAqVy8AYU?dsid_h=7eed01026ead4a7[…]d8d5b53a2d68dd55623ef70f1501a7ddebc0f2a804ee49b2e2a5ae5ffb
+    WhiteBoarding: 
+    
+![challenge 12](./codechallenge12.png)
