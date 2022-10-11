@@ -96,7 +96,7 @@ class Queue {
 
     let current = this.front;
     this.front = this.front.next;
-    console.log(`dequeued node ${JSON.stringify(current.value)}`)
+    // console.log(`dequeued node ${JSON.stringify(current.value)}`)
     // console.log(`new front ${this.front.value}`);
     this.length--;
     return current.value;
@@ -204,10 +204,44 @@ class AnimalShelter {
   }
 }
 
+class CircularQueue{
+  constructor(){
+    this.head = null;
+    this.back = null;
+  }
+
+  enqueue(value){
+    if(!this.head){
+      this.head = new Node(value);
+      this.back.next = this.head;
+    }
+
+    let newNode = new Node(value);
+    newNode.next = this.head;
+    this.back.next= newNode;
+  }
+
+  dequeue(){
+   let temp = this.head;
+   this.head = this.head.next;
+   this.back.next = this.head;
+   return temp;
+  }
+
+  peek(){
+    return this.head.value;
+  }
+
+  isEmpty(){
+    return this.head === null;
+  }
+}
+
 module.exports = {
   Node,
   Stack,
   Queue,
   PseudoQueue,
-  AnimalShelter
+  AnimalShelter,
+  CircularQueue,
 }
