@@ -232,6 +232,49 @@ class BinarySearchTree {
   }
 }
 
+class KaryNode{
+  constructor(value){
+    this.value = value;
+    this.children = [];
+    this.parent = null;
+  }
+}
+
+class KaryTree{
+  constructor(data){
+    let node = new KaryNode(data);
+    this.root = node;
+  }
+
+  fizzBuzzTree(){
+
+
+    const traverse = (node) => {
+      // console.log(node);
+      if(!node){
+        return;
+      }
+  
+      if(node.value % 3 === 0 && node.value % 5 === 0){
+        node.value = 'fizzBuzz';
+      } else if(node.value % 5 === 0){
+        node.value = 'Buzz';
+      } else if (node.value % 3 === 0){
+        node.value = 'Fizz';
+      } else {
+        node.value = node.value.toString();
+      }
+      console.log(node.value);
+      for(let i = 0; i < node.children.length; i++){
+        node.children.length && traverse(node.children[i]);
+      };
+    }
+
+    traverse(this.root);
+    return this.root;
+  }
+}
+
 let tree = new BinaryTree();
 tree.root = new Node(10);
 tree.root.left = new Node(5);
@@ -242,8 +285,29 @@ tree.root.right.right = new Node(17);
 // tree.add(10);
 // tree.add(5);
 // tree.add(15);
-let response = tree.breadthFirst();
-console.log(response);
+// let response = tree.breadthFirst();
+// console.log(response);
+
+let kTree = new KaryTree(10);
+
+kTree.root.children.push(new KaryNode(3));
+kTree.root.children[0].parent = kTree;
+
+kTree.root.children.push(new KaryNode(8));
+kTree.root.children[1].parent = kTree;
+
+kTree.root.children.push(new KaryNode(4));
+kTree.root.children[2].parent = kTree;
+
+kTree.root.children[0].children.push(new KaryNode(15));
+kTree.root.children[0].children[0].parent = kTree.root.children[0];
+
+kTree.root.children[0].children.push(new KaryNode(25));
+kTree.root.children[0].children[1].parent = kTree.root.children[0];
+
+kTree.fizzBuzzTree();
+
+console.log(kTree.root);
 
 // tree.preOrder();
 // tree.inOrder();
@@ -256,8 +320,12 @@ console.log(response);
 // console.log('contains method', result);
 // tree.inOrder();
 
+
+
 module.exports = {
   BinarySearchTree,
   BinaryTree,
   Node,
+  KaryNode,
+  KaryTree,
 };

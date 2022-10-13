@@ -45,6 +45,8 @@
   of a tree reduces the amount of nodes and edges the algorithm may have to examine. 
 
   find Max Value: Time efficiency is O(N), traversal of all nodes and edges within the tree
+
+  fizzbuzz: Time efficiency is O(N), requires traversal of all nodes and edges within tree 
 ## API
 <!-- Description of each method publicly available in each of your trees -->
 **Binary Tree class**
@@ -55,6 +57,10 @@
 **Binary Search Tree class**
   Add : takes in a value as an arguement and returns nothing, but inserts a node into the right place of a BST
 
+**K-ary Tree class**
+  fizzbuzz : Write a function call fizzBuzzTree that takes in a K-ary tree and returns a new K-ary tree
+
 **WhiteBoarding Process**
 ![challenge16](./assets/codechallenge16.png)
 ![challenge17](./assets/codechallenge17.png)
+![challenge18](./assets/fizzbuzztree.png)
