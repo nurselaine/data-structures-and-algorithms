@@ -33,3 +33,47 @@ ALGORITHM Swap(arr, i, low)
     arr[low] <-- temp
 
 */
+
+const arr = [5,3,7,6,2];
+const swap = (arr, leftIndex, rightIndex) => {
+   let temp = arr[leftIndex]; // 1
+   arr[leftIndex] = arr[rightIndex]; // 3
+   arr[rightIndex] = temp; // 1
+   // 5, 6, 7, 3, 2
+};
+const partition = (arr, left, right) => { 
+   let pivot = arr[Math.floor((right + left) / 2)]; // 2
+   let i = left; //0
+   let j = right; //4 
+   while (i <= j) { // 0 < j
+      while (arr[i] < pivot) {
+         i++; // 1
+      };
+      while (arr[j] > pivot) {
+         j--; // 3
+      };
+      if (i <= j) { // 1 <= 3
+         swap(arr, i, j); //sawpping two elements
+         i++; // 2
+         j--; // 2
+      };
+   };
+   return i; // 2
+}
+const quickSort = (arr, left = 0, right = arr.length - 1) => {
+   let index;
+   if (arr.length > 1) {
+      index = partition(arr, left, right); //
+      if (left < index - 1) { 
+         quickSort(arr, left, index - 1);
+      };
+      if (index < right) {
+         quickSort(arr, index, right);
+      };
+   }
+   return arr;
+}
+let sortedArray = quickSort(arr);
+console.log(sortedArray);
+
+module.exports = { quickSort, partition, swap };

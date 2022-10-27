@@ -1,5 +1,13 @@
 # QuickSort
 
+  Sort algorithm that uses a pivot and a left and a right pointer. With these pointers, the pivot is a marker to either swap left and right or vice versa. 
+
+### Algorithm
+  First set a pivot, it can be any element but for now we will use the right most element. 
+
+  After that we will 
+
+
 ### Alternative Lab
   Implement the functions sortYear, sortTitle, and inGenre in the file sort.ts.
     Execute your tests while developing using npm run watch
