@@ -1,0 +1,15 @@
+{
+  "name": "trees",
+  "version": "1.0.0",
+  "description": "<!-- Short summary or background information -->   Organized by hierarchy (hierarchical) - have a root and children      that act as subtrees from there on",
+  "main": "tree.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.2.0"
+  }
+}
