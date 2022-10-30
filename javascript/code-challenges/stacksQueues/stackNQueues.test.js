@@ -11,32 +11,67 @@ const animalShelterTest1 = new AnimalShelter();
 const dogObj = {name: 'dog'};
 const catObj = {name: 'cat'};
 
+// const validateBrackets = (string) => {
+//   if(typeof(string) !== 'string' || string === null){
+//     return console.log('Please provide valid string');
+//   }
+//     let openStack = new Stack();
+//     let closeStack = new Stack();
+
+//     for(let i = 0; i < string.length; i ++){
+//       if(string.charAt(i) === '(' || string.charAt(i) === '[' || string.charAt(i) === '{'){
+//         openStack.push(string.charAt(i));
+//       }
+//       if(string.charAt(i) === ')' || string.charAt(i) === ']' || string.charAt(i) === '}' ){
+//         closeStack.push(string.charAt(i));
+//       }
+//     }
+
+//     while(!openStack.isEmpty()){
+//       let openBrac = openStack.pop();
+//       let closeBrac = closeStack.pop();
+//       if(openBrac !== closeBrac){
+//         return false;
+//       }
+//     }
+//     return closeStack.isEmpty() ? true : false;
+
+
+// }
+
 const validateBrackets = (string) => {
-  if(typeof(string) !== 'string' || string === null){
-    return console.log('Please provide valid string');
+
+  if(!string){
+    return false;
   }
-    let openStack = new Stack();
-    let closeStack = new Stack();
 
-    for(let i = 0; i < string.length; i ++){
-      if(string.charAt(i) === '(' || string.charAt(i) === '[' || string.charAt(i) === '{'){
-        openStack.push(string.charAt(i));
-      }
-      if(string.charAt(i) === ')' || string.charAt(i) === ']' || string.charAt(i) === '}' ){
-        closeStack.push(string.charAt(i));
-      }
+  
+
+  let openBrac = new Stack();
+  let count = 0;
+
+  while(count <= string.length){
+
+    if(string.charAt(count) === '(' || string.charAt(count) === '[' || string.charAt(count) === '{'){
+      openBrac.push(string.charAt(count));
+      count++;
     }
 
-    while(!openStack.isEmpty()){
-      let openBrac = openStack.pop();
-      let closeBrac = closeStack.pop();
-      if(openBrac !== closeBrac){
-        return false;
-      }
+    if(string.charAt(count) === ')' && openBrac.peek() === '(') {
+      openBrac.pop();
+      count++;
+    } else if(string.charAt(count) === '}' && openBrac.peek() === '{') {
+      openBrac.pop();
+      count++;
+    } else if(string.charAt(count) === ']' && openBrac.peek() === '[') {
+      openBrac.pop();
+      count++;
+    } else {
+      return false;
     }
-    return closeStack.isEmpty() ? true : false;
+  }
 
-
+  return openBrac.isEmpty();
 }
 
 // animalShelterTest1.enqueue(dogObj); // 1 

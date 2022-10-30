@@ -3,7 +3,7 @@ const Node = require('./Node');
 
 class LinkedList {
 
-    constructor(head){
+    constructor(){
         this.head = new Node(-1, null);
         this.length = 0;
     }

@@ -72,7 +72,17 @@ class HashTable{
    */
   has(key){
     let location = this.hash(key);
-    return this.buckets[location].head !== null;
+    let bucket = this.buckets[location];
+    if(bucket){
+      let curr = bucket.head.next;
+      while(curr.data.key !== key){
+        curr = curr.next;
+        if(curr.data.key === key){
+          return true;
+        }
+      }
+    }
+    return false;
   }
 
   /**
@@ -108,5 +118,7 @@ table.set('bao', {name: 'Bao', age: 25});
 table.set('oab', {name: 'Bao', age: 27});
 // console.log(table.get('oab'));
 console.log(table.keys());
+console.log(table.has('elaine'));
+console.log(table.has('money'));
 
 module.exports = HashTable;

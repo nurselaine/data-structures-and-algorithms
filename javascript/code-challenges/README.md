@@ -24,6 +24,8 @@
 3. [linked-list]('./linked-lists')
 4. [reverse-II]('./reverse-11)
 5. [stacks & Queues]('./stacksQueues')
+6. [trees](./trees/)
+
 
 
 ## Challenge Execution and Testing
