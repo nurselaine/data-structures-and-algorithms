@@ -73,9 +73,10 @@ class HashTable{
   has(key){
     let location = this.hash(key);
     let bucket = this.buckets[location];
+    console.log(bucket);
     if(bucket){
       let curr = bucket.head.next;
-      while(curr.data.key !== key){
+      while(curr.data.key !== key && curr.next != null){
         curr = curr.next;
         if(curr.data.key === key){
           return true;
@@ -103,22 +104,51 @@ class HashTable{
         buckets.push(curr.data.key);
       };
     });
-    console.log('bucket--------',buckets);
     return buckets;
   };
 };
 
-let table = new HashTable(1024);
+function repeatWord(str){
+  let arr = str.split(' ');
+  let unique = new Map();
+  let repeat;
+
+  for(let i = 0; i < arr.length; i++){
+    let word = arr[i].toLowerCase();
+      if(word.includes(',')){
+        word = word.split('');
+        word.pop();
+        word = word.join('');
+      }
+    if(unique.has(word)) {
+      repeat = arr[i];
+      return repeat;
+    } else {
+      unique.set(word, true)
+    };
+  }
+  return repeat;
+}
+let str = "Once upon a time, there was a brave princess who...";
+let str2 = "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair, we had everything before us, we had nothing before us, we were all going direct to Heaven, we were all going direct the other way – in short, the period was so far like the present period, that some of its noisiest authorities insisted on its being received, for good or for evil, in the superlative degree of comparison only..."
+let str3 = "It was a queer, sultry summer, the summer they electrocuted the Rosenbergs, and I didn’t know what I was doing in New York...";
+console.log('repeat fn ',(repeatWord(str3)));
+
+// let table = new HashTable(1024);
+// console.log(table);
+// console.log(table.has('heoo'));
 
 // console.log(table);
 // console.log(table.hash('elaine'));
-table.set('elaine', {name: 'Elaine', age: 23});
-table.set('ealnie', {name: 'Elaine', age: 25});
-table.set('bao', {name: 'Bao', age: 25});
-table.set('oab', {name: 'Bao', age: 27});
+// table.set('elaine', {name: 'Elaine', age: 23});
+// table.set('ealnie', {name: 'Elaine', age: 25});
+// table.set('bao', {name: 'Bao', age: 25});
+// table.set('oab', {name: 'Bao', age: 27});
+// table.set('heoo', {hello: 'helloo'});
 // console.log(table.get('oab'));
-console.log(table.keys());
-console.log(table.has('elaine'));
-console.log(table.has('money'));
+// console.log(table.keys());
+// console.log(table.has('elaine'));
+// console.log(table.has('ealelainenie'));
+// console.log(table.has('elaine'));
 
-module.exports = HashTable;
+module.exports = {HashTable, repeatWord};
