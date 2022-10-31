@@ -36,3 +36,9 @@
     - Arguments: key
     - this method will calculate a unique index using the key's characters. This index will create a linked list within a bucket
     - Returns: Index in the collection for that key
+
+  repeatedWord
+    - Arguments: string
+    - this method finds the first word to occur more than once in a string and returns that word
+    - Time efficiency requires O(N) worst case scenarios; however, this algorithm is adaptive and will return once the first repetitive string is found. Depending on the input, the output is O(N - M). Space complexity is dependent on the size of the hashtable. 
+    - returns string

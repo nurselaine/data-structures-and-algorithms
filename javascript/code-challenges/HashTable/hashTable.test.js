@@ -1,7 +1,11 @@
 'use strict';
-const HashTable = require('./hashTable');
+const { HashTable, repeatWord } = require('./hashTable');
 
 let test1 = new HashTable(1024);
+
+let str = "Once upon a time, there was a brave princess who...";
+let str2 = "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair, we had everything before us, we had nothing before us, we were all going direct to Heaven, we were all going direct the other way – in short, the period was so far like the present period, that some of its noisiest authorities insisted on its being received, for good or for evil, in the superlative degree of comparison only..."
+let str3 = "It was a queer, sultry summer, the summer they electrocuted the Rosenbergs, and I didn’t know what I was doing in New York...";
 
 describe('HashTable Class', () => {
   it('Can instantiate an empty hashtable with defined size', () => {
@@ -66,5 +70,15 @@ describe('HashTable Class', () => {
 
     expect(response).toBeLessThanOrEqual(1024);
     expect(response).toBeGreaterThanOrEqual(0);
+  });
+
+  it('Can successfully identify repeat words in a string', () => {
+    let response1 = repeatWord(str);
+    let response2 = repeatWord(str2);
+    let response3 = repeatWord(str3);
+
+    expect(response1).toEqual('a');
+    expect(response2).toEqual('it');
+    expect(response3).toEqual('summer');
   })
 })
