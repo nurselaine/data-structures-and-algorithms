@@ -39,5 +39,7 @@
   6. Lastly, return the array in the main function. It should now include all of the nodes found in the first tree and second tree. 
 
 
-    
+## Big-O
+  - Time Complexity: O(N) requires traversal of both inputs 
+  - Space Complexity: An array was used as a return type; however, no other data structures are required for this algorithm. The array size is also < the size of both input trees; however, worst case, the array size would hold the same amount of inputs of one tree or half the nodes in both trees. 
 
