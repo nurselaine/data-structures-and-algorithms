@@ -23,3 +23,7 @@
   c. With that value, append it to the matrix at the according index of [current key][last index]
 4. Once the entire hash table has been travsered, all values should have been added into the matrix
 5. Return the matrix 
+
+## Big-O
+  - Time Complexity: O(N), requires traversal of hashmap with greatest # of keys. Utilizes a while loop that repeats N times.
+  - Space Complexity: O(N), returning a matrix containing all of the keys of at least one input. Worst case scenario, O(N + N) with N being the number of values from each input. The data structure will be a combination of all input values thus the space complexity increases linear to the input size
