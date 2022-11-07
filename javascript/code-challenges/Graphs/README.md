@@ -30,3 +30,11 @@
   - Returns number representing total nodes in graph
   - Efficiency: O(1) because a length property within the graph class is being returned while space is also O(1)
 
+  6. depthFirst:
+
+  7. breadthFirst: Traverses the graph in the order of a starting node then it's neighbor nodes
+    - Arguments: starting vertex
+    - return: A collection of nodes in the order they were visited
+    - Efficiency: Worst case is O(N^N) when traversing a connected graph. Traverse each node of the tree and traverse each edge for each vertex N times
+    - Space efficiency: O(N), a Set is returned that includes all the graph's vertexes 
+

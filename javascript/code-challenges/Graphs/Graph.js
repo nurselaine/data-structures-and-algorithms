@@ -1,5 +1,7 @@
 'use strict';
 
+const { Queue } = require('../stacksQueues/stackNQueues');
+
 class Vertex {
   constructor(value){
     this.value = value;
@@ -62,13 +64,15 @@ class Graph{
    * @returns 
    */
   getNeighbors(node){
-    let edges = this.adjacencyList.get(node).map((key) =>(
-      {
-        value: key.vertex.value,
-        weight: key.weight,
-      }
-    ));
-    return edges;
+    // console.log('neighbors method', this.adjacencyList.get(node));
+    // console.log(this.adjacencyList);
+    // let edges = this.adjacencyList.get(node).map((key) =>(
+    //   {
+    //     value: key.vertex.value,
+    //     weight: key.weight,
+    //   }
+    // ));
+    return this.adjacencyList.get(node);
   }
 
   /**
@@ -76,8 +80,37 @@ class Graph{
    * @returns number representing # of vertexes in graph
    */
   size(){
-    return this.size;
+    return this.length;
   }
+
+  depthFirst(){
+
+  }
+
+  breadthFirst(node){
+    let queue = new Queue();
+    let visited = new Set();
+    let returnArray = [];
+    queue.enqueue(node);
+    visited.add(node);
+
+    while(!queue.isEmpty()){
+      let currentNode = queue.dequeue();
+      // console.log(currentNode);
+      returnArray.push(currentNode.value);
+      let neighbors = this.getNeighbors(currentNode); // this will return [] with node's neighbors
+        
+      for(let i = 0; i < neighbors.length; i++){
+        if(!visited.has(neighbors[i].vertex)){
+          visited.add(neighbors[i].vertex);
+          queue.enqueue(neighbors[i].vertex);
+        }
+      }
+    }
+    return returnArray;
+  };
+
+  // define a new method that accepts two nodes as input and uses your traversal algorithm to determine if a path exists between the two nodes.
   
 }
 
@@ -102,6 +135,8 @@ graph.addEdge(D, F);
 graph.addEdge(D, H);
 graph.addEdge(F, E);
 graph.addEdge(F, H);
+
+graph.breadthFirst(A);
 
 
 // console.log(graph.getNeighbors(A));
