@@ -51,8 +51,8 @@ describe('Graph Implementation', () => {
     let response = graph.getNeighbors(D);
     let response2 = graph.getNeighbors(F);
 
-    let expectedResponse = [{"value": "F", "weight": 0}, {"value": "H", "weight": 0}];
-    let expectedResponse2 = [{"value": "E", "weight": 0}, {"value": "H", "weight": 0}];
+    let expectedResponse =  [{"vertex": {"value": "F"}, "weight": 0}, {"vertex": {"value": "H"}, "weight": 0}];
+    let expectedResponse2 = [{"vertex": {"value": "E"}, "weight": 0}, {"vertex": {"value": "H"}, "weight": 0}];
 
     expect(response).toEqual(expect.arrayContaining(expectedResponse));
     expect(response2).toEqual(expect.arrayContaining(expectedResponse2));
@@ -69,7 +69,7 @@ describe('Graph Implementation', () => {
   test('All appropriate neighbors can be retrieved from the graph', () => {
     let response = graph.getNeighbors(A);
     
-    let expectedResponse = [{"value": "B", "weight": 0}, {"value": "C", "weight": 0}, {"value": "D", "weight": 0}];
+    let expectedResponse = [{"vertex": {"value": "B"}, "weight": 0}, {"vertex": {"value": "C"}, "weight": 0}, {"vertex": {"value": "D"}, "weight": 0}];
 
     expect(response).toEqual(expect.arrayContaining(expectedResponse));
     expect(response.length).toBeGreaterThanOrEqual(0);
@@ -107,4 +107,14 @@ describe('Graph Implementation', () => {
   //   const A = graph.addVertex('A');
   //   graph.addEdge(A, 100);
   // });
+
+  test('Breadth First Traversal returns a collection of nodes in the order they were visited', () => {
+    let response = graph.breadthFirst(A);
+
+    expect(response).toEqual(expect.arrayContaining(
+      ['A', 'B', 'C',
+      'D', 'G', 'H',
+      'F', 'E']
+  ));
+  }) 
 });
