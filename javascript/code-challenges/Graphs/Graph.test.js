@@ -1,4 +1,4 @@
-const { Graph, Vertex, Edge } = require('./Graph');
+const { Graph, businessTrip } = require('./Graph');
 
 /**
  * Node can be successfully added to the graph
@@ -115,6 +115,33 @@ describe('Graph Implementation', () => {
       ['A', 'B', 'C',
       'D', 'G', 'H',
       'F', 'E']
-  ));
-  }) 
+    ));
+  });
+
+  test('Business Trips Returns Total Cost of planned trip', () => {
+    const graph = new Graph();
+
+    const A = graph.addVertex('A');
+    const B = graph.addVertex('B');
+    const C = graph.addVertex('C');
+    const D = graph.addVertex('D');
+    const G = graph.addVertex('G');
+    const H = graph.addVertex('H');
+
+    graph.addEdge(A, B, 10);
+    graph.addEdge(A, C, 14);
+    graph.addEdge(A, D, 18);
+    graph.addEdge(B, G, 4);
+    graph.addEdge(C, H, 27);
+
+    let result = businessTrip(graph, [A, D]);
+    expect(result).toEqual(18);
+
+    let result2 = businessTrip(graph, [A, C, H]);
+    expect(result2).toEqual(41);
+
+    let result3 = businessTrip(graph, [A, H]);
+    expect(result3).toBe(null);
+
+  })
 });
