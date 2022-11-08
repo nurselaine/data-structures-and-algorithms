@@ -126,19 +126,33 @@ const F = graph.addVertex('F');
 const G = graph.addVertex('G');
 const H = graph.addVertex('H');
 
-graph.addEdge(A, B);
-graph.addEdge(A, C);
-graph.addEdge(A, D);
-graph.addEdge(B, G);
-graph.addEdge(C, H);
+graph.addEdge(A, B, 10);
+graph.addEdge(A, C, 14);
+graph.addEdge(A, D, 18);
+graph.addEdge(B, G, 4);
+graph.addEdge(C, H, 27);
 graph.addEdge(D, F);
 graph.addEdge(D, H);
 graph.addEdge(F, E);
 graph.addEdge(F, H);
 
-graph.breadthFirst(A);
 
+function businessTrip(graph, array){
+  // Determine if the first and second values in the array are neighbors
+  let start = 0;
+  let j = start + 1;
+  let tripTotal = 0;
 
-// console.log(graph.getNeighbors(A));
+  while(start < array.length - 1 && array[j] !== null){
+    let neighbors = graph.getNeighbors(array[start]);
+    let next = neighbors.filter(edge => edge.vertex === array[j]);
+    if(neighbors.includes(next[0])){
+      tripTotal += next[0].weight;
+    }
+    start++;
+    j++;
+  }
+  return tripTotal > 0 ? tripTotal : null;
+};
 
-module.exports = { Graph, Vertex, Edge };
+module.exports = { Graph, Vertex, Edge, businessTrip };
