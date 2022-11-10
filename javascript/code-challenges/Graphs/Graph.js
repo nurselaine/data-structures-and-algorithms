@@ -1,6 +1,6 @@
 'use strict';
 
-const { Queue } = require('../stacksQueues/stackNQueues');
+const { Queue, Stack } = require('../stacksQueues/stackNQueues');
 
 class Vertex {
   constructor(value){
@@ -83,8 +83,29 @@ class Graph{
     return this.length;
   }
 
-  depthFirst(){
+  depthFirst(root, cb){
 
+    let stack = new Stack();
+    let visited = new Set();
+    let returnArray = [];
+    stack.push(root);
+    visited.add(root);
+
+    while(!stack.isEmpty()){
+      const curr = stack.pop();
+      returnArray.push(curr.value);
+      // console.log(curr.value);
+      if(cb) { cb(curr) };
+
+      let neighbors = this.getNeighbors(curr);
+      for(let edge of neighbors){
+        if(!visited.has(edge.vertex)){
+          visited.add(edge.vertex);
+          stack.push(edge.vertex);
+        }
+      }
+    }
+    return returnArray;
   }
 
   breadthFirst(node){
@@ -96,7 +117,7 @@ class Graph{
 
     while(!queue.isEmpty()){
       let currentNode = queue.dequeue();
-      // console.log(currentNode);
+      // console.log('----------',currentNode);
       returnArray.push(currentNode.value);
       let neighbors = this.getNeighbors(currentNode); // this will return [] with node's neighbors
         
@@ -136,6 +157,8 @@ graph.addEdge(D, H);
 graph.addEdge(F, E);
 graph.addEdge(F, H);
 
+// console.log(graph.depthFirst(A));
+
 
 function businessTrip(graph, array){
   // Determine if the first and second values in the array are neighbors
@@ -148,7 +171,7 @@ function businessTrip(graph, array){
     let next = neighbors.filter(edge => edge.vertex === array[j]);
     if(neighbors.includes(next[0])){
       tripTotal += next[0].weight;
-    }
+    };
     start++;
     j++;
   }

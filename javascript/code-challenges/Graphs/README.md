@@ -30,7 +30,10 @@
   - Returns number representing total nodes in graph
   - Efficiency: O(1) because a length property within the graph class is being returned while space is also O(1)
 
-  6. depthFirst:
+  6. **depthFirst**: Traverse an entire graph
+  - Arguments: Node (starting point of search)
+  - Return: A collection of nodes in their pre-order depth traversal order and display a collection of the vertexes
+  - Efficiency: O(N) requires traversal of the entire graph, includes all vertexes and edges. Space complexity is O(N) as it is dependent on the size of the graph being traversed
 
   7. **breadthFirst**: Traverses the graph in the order of a starting node then it's neighbor nodes
   - Arguments: starting vertex
