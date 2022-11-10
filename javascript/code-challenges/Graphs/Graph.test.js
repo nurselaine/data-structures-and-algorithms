@@ -116,6 +116,8 @@ describe('Graph Implementation', () => {
       'D', 'G', 'H',
       'F', 'E']
     ));
+    expect(response.length).toBe(8);
+    expect(response[0]).toEqual('A');
   });
 
   test('Business Trips Returns Total Cost of planned trip', () => {
@@ -143,5 +145,17 @@ describe('Graph Implementation', () => {
     let result3 = businessTrip(graph, [A, H]);
     expect(result3).toBe(null);
 
-  })
+  });
+
+  test('Depth First Traversal returns a collection of nodes in the order they were visited', () => {
+    let response = graph.depthFirst(A);
+
+    expect(response).toEqual(expect.arrayContaining(
+      ['A', 'D', 'H',
+      'F', 'E', 'C',
+      'B', 'G']
+    ));
+    expect(response.length).toBe(8);
+    expect(response[0]).toEqual('A');
+  });
 });
